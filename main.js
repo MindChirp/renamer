@@ -3,6 +3,7 @@ const path = require("path");
 const readline = require("readline");
 
 var pathToEdit = path.join(__dirname + "/../");
+var dateLength = 25;
 
 fs.readdir(pathToEdit, (err, files) => {
     files.forEach(file => {
@@ -17,8 +18,14 @@ fs.readdir(pathToEdit, (err, files) => {
           });
 
           readInterface.on('line', function(line) {
-            console.log(line);
+            if(line.split("property=")[0].substring(1,25) == "og:article:published_time") {
+              console.log(line);
+              console.log(line.split("content=")[0]);
+              line.split("content=")[0].substring(1,10);
+            }
         });
         }
     });
   });
+
+
